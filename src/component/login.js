@@ -108,7 +108,7 @@ export default class Login extends Component {
     this.setState({
       isLoading: true,
     });
-    const res=await fetch('http://localhost:5000/login', {
+    const res=await fetch('https://twitake.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -155,7 +155,7 @@ export default class Login extends Component {
       const obj = getFromStorage('SESS_ID');
       if (obj && obj.token) {
         const { token } = obj;
-        const res= await fetch(' http://localhost:5000/verify?token=' + token)
+        const res= await fetch('https://twitake.herokuapp.com/verify?token=' + token)
         const jsonData=await res.json()
         if (jsonData.success) {
           await this.setState({

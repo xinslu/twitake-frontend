@@ -131,7 +131,7 @@ export default class SignUp extends Component {
     this.setState({
       isLoading: true,
     });
-    var res= await fetch('/signup', {
+    var res= await fetch('https://twitake.herokuapp.com/signup', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -145,7 +145,7 @@ export default class SignUp extends Component {
     })
     const jsonData=await res.json()
     if (jsonData.success) {
-      const res=await fetch('http://localhost:5000/login', {
+      const res=await fetch('https://twitake.herokuapp.com/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -211,7 +211,7 @@ export default class SignUp extends Component {
       const obj = getFromStorage('SESS_ID');
       if (obj && obj.token) {
         const { token } = obj;
-        const res= await fetch('/verify?token=' + token)
+        const res= await fetch('https://twitake.herokuapp.com/verify?token=' + token)
         const jsonData=await res.json()
         if (jsonData.success) {
           this.setState({

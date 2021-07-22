@@ -87,7 +87,7 @@ export default class Home extends Component {
       const obj = getFromStorage('SESS_ID');
       if (obj && obj.token) {
         const { token } = obj;
-        const res= await fetch('/verify?token=' + token)
+        const res= await fetch('https://twitake.herokuapp.com/verify?token=' + token)
         const jsonData=await res.json()
         if (jsonData.success) {
           this.setState({

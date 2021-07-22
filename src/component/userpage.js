@@ -94,7 +94,7 @@ export default class UserPage extends Component {
       isLoading: true,
     });
       const tweetID=tweetLink.split("/")[5]
-      var res= await fetch('http://localhost:5000/text', {
+      var res= await fetch('https://twitake.herokuapp.com/text', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -106,7 +106,7 @@ export default class UserPage extends Component {
       const jsonData=await res.json()
       if (jsonData.success){
         this.setState({tweetText: jsonData.message})
-        var predict=await fetch('/predict',{
+        var predict=await fetch('https://twitake.herokuapp.com/predict',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -133,7 +133,7 @@ export default class UserPage extends Component {
           isLoading: true,
         });
         const { token } = this.state;
-        const res= await fetch('/logout?token=' + token)
+        const res= await fetch('https://twitake.herokuapp.com/logout?token=' + token)
         const jsonData=await res.json()
         if (jsonData.success) {
           deleteFromStorage()
@@ -152,7 +152,7 @@ export default class UserPage extends Component {
        const obj = getFromStorage('SESS_ID');
       if (obj && obj.token) {
         const { token } = obj;
-        const res= await fetch('http://localhost:5000/verify?token=' + token)
+        const res= await fetch('https://twitake.herokuapp.com/verify?token=' + token)
         const jsonData=await res.json()
         if (jsonData.success) {
           await this.setState({
